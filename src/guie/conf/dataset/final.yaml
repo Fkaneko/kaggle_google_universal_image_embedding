@@ -1,0 +1,149 @@
+# train/val split
+n_splits: 10
+val_fold: 0
+val_data_num: 3000
+cache_train_csv_path: "../input/cached_guie_multi_domain_train_final.csv"
+update_cache_train_csv: false
+
+crop_scale_range: [0.40, 1.0]
+rand_augment_magnitude: 600
+
+# dataset generation
+# Wikipedia-based Image Text (WIT) Dataset
+wit_dir: "../input/wit"
+wit_huggingface_dir: "../input/wit/huggingface/"
+wit_kaggle_dir: "../input/wit/kaggle_competition/"
+# arrow_dir: "../input/wit/huggingface/wikimedia___parquet/wikimedia--wit_base-2aa45606b60c89b2/0.0.0/2a3b91fbd88a2c90d1dbbb32b460cf621d31bd5b05b934492fdef7d8d6f236ec"
+arrow_dir: "../input/wit/huggingface/wikimedia___parquet/wikimedia--wit_base-0b0f415dd8ae2b62/0.0.0/2a3b91fbd88a2c90d1dbbb32b460cf621d31bd5b05b934492fdef7d8d6f236ec"
+num_worker: 1
+test_size: 0.1
+
+caption_column: "caption_attribution_description"
+overwrite_output_dir: True
+preprocess_text_on_the_fly: False
+preprocessing_num_workers: 6
+new_caption_column: "cleaned_caption"
+sample_stride: 1
+
+make_unified_label: true  # when true, need train_target_domain_names does not have other
+
+# domain selection
+train_target_domain_names:
+  - "products_10k"
+  - "glr"
+  - "in_shop"
+  # - "sop"
+  # - "met"
+  # - "ifood"
+  # - "hotel_id"
+  # - "omini_bench_food"
+  # - "other"
+
+do_eval_glr: false
+retreival_eval_targets:
+  - "sop"
+  # - "objectnet"
+  # - "in_shop"
+  # - "met"
+  # - "products_10k"
+  # - "food_101"
+  # - "glr"
+
+
+#imagenet_1k
+imagenet_1k_dir: "../input/imagenet"
+imagenet_1k_arrow_dir: "../input/imagenet/imagenet-1k/default/1.0.0/a1e9bfc56c3a7350165007d1176b15e9128fcaf9ab972147840529aed3ae52bc"
+use_torch_jit_at_transform: true
+
+# omni_benchmark
+omni_bench_dir: "../input/omni_benchmark/meta/"
+omni_trainid2name_file_path: "../input/omni_benchmark/meta/trainid2name.json"
+omni_bench_num_samples_per_class: 20
+omni_bench_remove_tail_class: false
+omni_bench_tail_class_threshold: 5
+
+# hotel_id
+hotel_id_dir: "../input/hotel_id"
+hotel_id_num_samples_per_class: 20
+hotel_id_remove_tail_class: true
+hotel_id_tail_class_threshold: 10
+
+# ifood
+ifood_dir: "../input/ifood"
+ifood_num_samples_per_class: 20
+ifood_remove_tail_class: false
+ifood_tail_class_threshold: null
+
+# glr
+glr_data_dir: "../input/glr"
+glr_eval_batch_size: 296
+glr_num_index_data: 60000
+glr_eval_arrow_dir: "../input/guie_query_index_split/RESIZED_224/glr_eval_arrow_set"
+update_glr_eval_dataset: false
+glr_cleaned_dir: "../input/glr_cleaned/"
+glr_num_samples_per_class: 20
+glr_remove_tail_class: true
+glr_tail_class_threshold: 150
+
+# products 10k
+products_10k_dir: "../input/products_10k"
+products_10k_num_samples_per_class: 20
+products_10k_remove_tail_class: true
+products_10k_tail_class_threshold: 15
+products_10k_num_query_data: null #  sampling based on group
+products_10k_num_queries_per_class: 5
+products_10k_num_index_data: null  # use official validation data
+products_10k_update_eval_dataset: false
+products_10k_arrow_dir: "../input/guie_query_index_split/RESIZED_224/products_10k_arrow_set"
+
+# met
+met_dir: "../input/the_met_dataset"
+met_num_samples_per_class: 20
+met_remove_tail_class: true
+met_tail_class_threshold: 9
+met_num_query_data: null # use official query data
+met_num_queries_per_class: null
+met_num_index_data: null  # use official test data + train data
+met_update_eval_dataset: false
+met_arrow_dir: "../input/guie_query_index_split/RESIZED_224/met_arrow_set"
+
+# in_shop
+in_shop_dir: "../input/DeepFashion/in_shop"
+in_shop_num_samples_per_class: 20
+in_shop_num_query_data: 3000
+in_shop_remove_tail_class: true
+in_shop_tail_class_threshold: 20
+in_shop_arrow_dir: "../input/guie_query_index_split/RESIZED_224/in_shop_arrow_set_1000"
+# use official query/index data for in_shop
+
+# sop
+sop_dir: "../input/Stanford_Online_Products/"
+sop_num_samples_per_class: 20
+sop_remove_tail_class: true
+sop_tail_class_threshold: 10
+sop_use_furniture_only: true
+sop_num_query_data: 1000
+sop_num_queries_per_class: 1
+sop_num_index_data: null  # use only furniture
+sop_update_eval_dataset: false
+sop_arrow_dir: "../input/guie_query_index_split/RESIZED_224/sop_arrow_set"
+
+
+# objectnet
+objectnet_dir: "../input/objectnet/objectnet-1.0"
+generate_jpeg_dataset: false  # need true at the first run
+objectnet_num_query_data: 500
+objectnet_num_queries_per_class: 2
+objectnet_num_index_data: null # use all data as index
+objectnet_update_eval_dataset: false
+objectnet_arrow_dir: "../input/guie_query_index_split/RESIZED_224/objectnet_arrow_set"
+
+# food_101
+food_101_dir: "../input/food-101"
+food_101_use_furniture_only: true
+food_101_num_query_data: 200
+food_101_num_queries_per_class: 2
+food_101_num_index_data: null # use all data as index
+food_101_update_eval_dataset: false
+food_101_arrow_dir: "../input/guie_query_index_split/RESIZED_224/food_101_arrow_set"
+

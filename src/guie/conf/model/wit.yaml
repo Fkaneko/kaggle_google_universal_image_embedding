@@ -1,0 +1,3 @@
+compressor_name: "linear"   # linear, transformer, mlp
+use_baseline: false
+transformer_d_model: 64

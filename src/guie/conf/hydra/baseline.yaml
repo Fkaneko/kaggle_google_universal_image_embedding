@@ -1,0 +1,9 @@
+# hydra override
+run:
+  dir: ../working/guie/${hydra.job.name}/${now:%Y-%m-%d_%H-%M-%S}
+sweep:
+  # Output directory for sweep runs
+  dir: ../working/guie/${hydra.job.name}/multi_run/${now:%Y-%m-%d_%H-%M-%S}
+verbose: none  #  specify module name like __main__, ane then these module logging level will be DEBUG
+job:
+  chdir: false

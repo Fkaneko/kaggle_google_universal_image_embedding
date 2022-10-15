@@ -1,0 +1,9 @@
+defaults:
+  # - hydra: baseline
+  - ml_ops: baseline
+  - dataset: final
+  - train: debug
+  - model: baseline
+  - _self_  # following https://hydra.cc/docs/upgrades/1.0_to_1.1/default_composition_order/
+
+seed: 42

@@ -1,0 +1,20 @@
+# jupyter
+jupyter-lsp==1.5.1
+jupyterlab==3.4.4
+jupyterlab-git==0.38.0
+jupyterlab-lsp==3.10.1
+python-lsp-server[all]==1.5.0
+ipywidgets==7.7.1
+jupytext==1.14.1
+jupyterlab-code-formatter==1.5.3
+
+# debugger
+spyder==5.3.3
+
+# linter
+black==22.6.0
+flake8==4.0.1
+mypy
+
+# env
+kaggle

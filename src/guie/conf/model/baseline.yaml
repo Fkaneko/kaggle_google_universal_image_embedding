@@ -1,0 +1,50 @@
+is_clip_backbone: true
+
+# clip case
+open_clip_model_name: "ViT-B-32"
+open_clip_pretrained: "laion2b_s34b_b79k"
+
+# non clip case
+# timm_model_name: "convnext_tiny_in22k"
+# timm_model_name: "beitv2_base_patch16_224_in22k"
+
+timm_model_name: "convnext_small_in22k"
+# timm_model_name: "convnext_large_in22k"
+
+num_head_layers: 0
+
+input_size: [224, 224]
+architecture: "multi_domain"  # multi_domain/single_domain
+domain_cls_loss_weight: 1.0
+
+layer_wise_lr_decay: 0.7
+layer_decay_backbone_factor: 0.1
+
+ensemble_mode: "single"
+use_weight_averaging: true
+weight_averaging_start_steps: 10
+
+drop_out_rate: 0.0
+drop_path_rate: 0.0
+is_freeze_backbone: true
+
+embed_dim: 64
+embed_mode: "unified" # unified/tile/separate
+use_two_layer_on_projection: false
+num_sub_centers: 1
+arcface_scale: 30.0
+arcface_margin: 0.3
+precomputed_class_centers_path: null
+
+
+
+# teacher settings
+teacher_clip_model: null # this control whether use teacher model
+teacher_pretrained: "laion2b_s34b_b79k"
+
+class_loss_weight: 1.0
+distill_loss_weight: 1.0
+distill_cos_loss_weight: 3.0
+use_binary_teacher: false
+
+evaluate_glr_per_epoch: true

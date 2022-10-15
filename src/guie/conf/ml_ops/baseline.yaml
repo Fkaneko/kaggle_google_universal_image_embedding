@@ -1,0 +1,5 @@
+project: "glr_train"
+run_name:
+tags: ["debug"]
+group: "debug"
+log_model: false

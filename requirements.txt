@@ -1,0 +1,28 @@
+# ml base
+hydra-core==1.2.0
+matplotlib==3.5.3
+scikit-learn==1.0.2
+seaborn==0.11.2
+
+# ml ops
+wandb==0.13.2
+
+# deep learning
+pytorch_lightning==1.7.1
+albumentations==1.2.1
+torchmetrics==0.9.3
+git+https://github.com/rwightman/pytorch-image-models@d4ea5c7d7d55967a8bedbfbb58962131d8aba776#egg=timm
+# timm==0.6.7
+
+
+# task specific
+transformers==4.22.1
+evaluate==0.2.2
+datasets==2.5.1
+accelerate==0.12.0
+sentence-transformers==2.2.2
+git+https://github.com/openai/CLIP@d50d76daa670286dd6cacf3bcd80b5e4823fc8e1#egg=clip
+git+https://github.com/mlfoundations/open_clip@e415f3b7841cc52afd10f4c9b2e6395a667be83b#egg=open_clip_torch
+umap-learn[plot]==0.5.3
+hdbscan==0.8.28
+fiftyone==0.16.6
