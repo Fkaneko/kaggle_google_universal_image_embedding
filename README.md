@@ -56,10 +56,10 @@ git clone https://github.com/Fkaneko/$PROJECT
 # install project
 cd $PROJECT
 conda env create -f  ./conda_env.yaml
+conda activate $CONDA_NAME
 pip install -U pip
 pip install -r ./requirements_dev.txt
 pip install -r ./requirements.txt
-conda activate $CONDA_NAME
 ```
 
 and need the following directory configuration
